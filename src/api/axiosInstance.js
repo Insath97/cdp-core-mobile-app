@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL || 'https://api-core.cdp.lk/api/v1',
-    withCredentials: true, // Crucial for sending/receiving cookies
+    // withCredentials: true, // Disabled for native compatibility
     headers: {
         'Content-Type': 'application/json',
     },
