@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import toast from 'react-hot-toast';
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL || 'https://api-core.cdp.lk/api/v1',
@@ -29,11 +30,18 @@ axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
         // Detailed error logging for mobile debugging
-        console.error('API Error:', {
+        const errorDetails = {
             url: error.config?.url,
             status: error.response?.status,
             data: error.response?.data,
             message: error.message
+        };
+        console.error('API Error:', errorDetails);
+
+        // Show error on screen for easier debugging on mobile
+        toast.error(`API Error: ${error.message} (Status: ${error.response?.status || 'Network Error'})\nURL: ${error.config?.url}`, {
+            duration: 10000,
+            position: 'top-center'
         });
 
         if (error.response?.status === 401) {
