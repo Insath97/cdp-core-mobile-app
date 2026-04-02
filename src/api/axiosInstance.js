@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_BASE_URL || 'http://127.0.0.1:8000/api/v1',
+    baseURL: import.meta.env.VITE_BASE_URL || 'https://api-core.cdp.lk/api/v1',
     withCredentials: true, // Crucial for sending/receiving cookies
     headers: {
         'Content-Type': 'application/json',

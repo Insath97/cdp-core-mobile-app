@@ -25,6 +25,8 @@ jobs:
 
       - name: Build Web App
         run: npm run build
+        env:
+          VITE_BASE_URL: https://api-core.cdp.lk/api/v1
 
       - name: Setup Java
         uses: actions/setup-java@v4
