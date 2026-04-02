@@ -28,10 +28,21 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
+        // Detailed error logging for mobile debugging
+        console.error('API Error:', {
+            url: error.config?.url,
+            status: error.response?.status,
+            data: error.response?.data,
+            message: error.message
+        });
+
         if (error.response?.status === 401) {
             localStorage.removeItem('token');
             Cookies.remove('auth_token');
-            window.location.href = '/login';
+            // Check if we are on mobile to avoid full redirect reload loop if not needed
+            if (window.location.pathname !== '/login') {
+                window.location.href = '/login';
+            }
         }
         return Promise.reject(error);
     }
