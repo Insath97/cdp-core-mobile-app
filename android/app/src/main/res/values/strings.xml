@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CDP CORE</string>
+    <string name="title_activity_main">CDP CORE</string>
+    <string name="package_name">com.cdp.core</string>
+    <string name="custom_url_scheme">com.cdp.core</string>
+</resources>
